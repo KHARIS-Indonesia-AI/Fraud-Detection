@@ -1,86 +1,86 @@
-# Sistem Deteksi Fraud dengan Machine Learning
+# Fraud Detection System
 
-Sebuah sistem cerdas untuk mendeteksi transaksi mencurigakan pada data perbankan dan kartu kredit menggunakan teknik machine learning.
+Sistem cerdas untuk mendeteksi transaksi mencurigakan pada data perbankan dan kartu kredit menggunakan teknik machine learning.
 
-## Latar Belakang
+## Background
 
-Kasus penipuan (fraud) dalam transaksi perbankan dan kartu kredit terus meningkat dan menimbulkan kerugian finansial yang signifikan bagi lembaga keuangan maupun nasabah. Seiring berkembangnya teknologi, metode penipuan juga semakin canggih dan sulit dideteksi dengan pendekatan konvensional.
+Kasus fraud dalam transaksi perbankan dan kartu kredit terus meningkat dan menimbulkan kerugian finansial yang signifikan bagi lembaga keuangan maupun nasabah. Seiring berkembangnya teknologi, metode penipuan juga semakin canggih dan sulit dideteksi dengan pendekatan konvensional.
 
-Machine learning menawarkan pendekatan yang lebih efektif karena mampu:
-- Menganalisis jutaan transaksi dan menemukan pola tersembunyi
-- Mengenali perilaku mencurigakan yang mungkin terlewatkan oleh sistem tradisional
-- Menyesuaikan diri dengan tren fraud terbaru secara lebih cepat
-- Mengurangi kasus "false alarm" yang sering mengganggu nasabah
+Machine learning offers a more effective approach because it can:
+- Analyze millions of transactions and find hidden patterns
+- Recognize suspicious behaviors that might be missed by traditional systems
+- Adapt more quickly to the latest fraud trends
+- Reduce false alarms that often disturb customers
 
-Proyek ini dikembangkan untuk membantu lembaga keuangan mengidentifikasi transaksi fraud secara akurat dan real-time, dengan meminimalkan gangguan pada transaksi normal nasabah.
+Project ini dikembangkan untuk membantu lembaga keuangan mengidentifikasi transaksi fraud secara akurat dan real-time, dengan meminimalkan gangguan pada transaksi normal nasabah.
 
 ## Dataset
 
 Data yang digunakan adalah `fraudTrain.csv` yang berisi catatan transaksi dengan berbagai informasi seperti:
-- Jumlah transaksi (`amt`)
-- Kategori pembelian (`category`)
-- Lokasi pengguna dan merchant (`lat`, `long`, `merch_lat`, `merch_long`)
-- Waktu transaksi (`trans_date_trans_time`)
-- Informasi demografis pengguna
-- Label transaksi (`is_fraud`) yang menunjukkan apakah transaksi tersebut fraud atau tidak
+- Transaction amount (`amt`)
+- Purchase category (`category`)
+- User and merchant location (`lat`, `long`, `merch_lat`, `merch_long`)
+- Transaction time (`trans_date_trans_time`)
+- User demographic information
+- Transaction label (`is_fraud`) yang menunjukkan apakah transaksi tersebut fraud atau tidak
 
-## Tahapan Analisis
+## Analysis Steps
 
 Kode dibagi menjadi 12 tahapan utama:
 
-1. **Loading Data**
-   - Membaca dataset dari Google Drive
-   - Melihat informasi dasar dataset
+1. **Data Loading**
+   - Reading dataset from Google Drive
+   - Exploring basic dataset information
 
 2. **Exploratory Data Analysis (EDA)**
-   - Analisis struktur dan distribusi data
-   - Identifikasi missing values
-   - Visualisasi proporsi fraud vs non-fraud
+   - Analyzing data structure and distribution
+   - Identifying missing values
+   - Visualizing fraud vs non-fraud proportions
 
 3. **Data Preprocessing**
-   - Pembersihan data dan penanganan nilai yang tidak relevan
-   - Konversi format tanggal
+   - Cleaning data and handling irrelevant values
+   - Converting date formats
 
 4. **Feature Engineering**
-   - Pembuatan fitur waktu (jam, hari, bulan transaksi)
-   - Perhitungan umur pengguna
-   - Perhitungan jarak antara pengguna dan merchant
-   - Konversi variabel kategori menjadi numerik
+   - Creating time features (hour, day, month of transaction)
+   - Calculating user age
+   - Computing distance between user and merchant
+   - Converting categorical variables to numeric
 
-5. **Analisis Lanjutan & Visualisasi**
-   - Visualisasi distribusi jumlah transaksi
-   - Analisis pola berdasarkan waktu
-   - Analisis korelasi antar fitur
+5. **Advanced Analysis & Visualization**
+   - Visualizing transaction amount distribution
+   - Analyzing patterns based on time
+   - Analyzing correlations between features
 
-6. **Persiapan Data untuk Modeling**
-   - Penghapusan fitur redundant
-   - Standarisasi fitur numerik
+6. **Data Preparation for Modeling**
+   - Removing redundant features
+   - Standardizing numeric features
 
 7. **Train-Test Split**
-   - Pembagian data menjadi 80% training dan 20% testing
+   - Splitting data into 80% training and 20% testing
 
-8. **Feature Engineering Lanjutan**
-   - Perhitungan fraud rate per kategori berdasarkan data training
-   - Penerapan transformasi yang aman tanpa kebocoran data
+8. **Advanced Feature Engineering**
+   - Calculating fraud rate per category based on training data
+   - Applying safe transformations without data leakage
 
-9. **Model Training & Evaluasi**
-   - Random Forest dengan parameter default
-   - XGBoost dengan optimasi hyperparameter
-   - Evaluasi performa model
+9. **Model Training & Evaluation**
+   - Random Forest with default parameters
+   - XGBoost with hyperparameter optimization
+   - Model performance evaluation
 
 10. **Model Stacking**
-    - Kombinasi model-model terbaik
-    - Evaluasi performa model gabungan
+    - Combining the best models
+    - Evaluating ensemble model performance
 
-11. **Analisis Feature Importance**
-    - Identifikasi fitur yang paling berpengaruh
-    - Visualisasi fitur penting
+11. **Feature Importance Analysis**
+    - Identifying the most influential features
+    - Visualizing important features
 
-12. **Perbandingan Model & Kesimpulan**
-    - Perbandingan performa antar model
-    - Penentuan model terbaik
+12. **Model Comparison & Conclusion**
+    - Comparing performance between models
+    - Determining the best model
 
-## Hasil
+## Results
 
 Perbandingan performa model (ROC AUC):
 
@@ -92,9 +92,9 @@ Perbandingan performa model (ROC AUC):
 
 Model Stacking memberikan hasil terbaik dengan ROC AUC 0.9979, menunjukkan kemampuan yang sangat baik dalam membedakan transaksi normal dan fraud.
 
-## Cara Penggunaan
+## How to Use
 
-### Kebutuhan Sistem
+### Requirements
 
 ```
 pandas
@@ -106,40 +106,40 @@ xgboost
 joblib
 ```
 
-### Menjalankan Kode
+### Running the Code
 
 1. Upload dataset `fraudTrain.csv` ke Google Drive
 2. Mount Google Drive di Google Colab
-3. Jalankan kode secara berurutan dari tahap 1 sampai 12
+3. Run the code sequentially from step 1 to 12
 
-## Tuning Hyperparameter
+## Hyperparameter Tuning
 
-Untuk model XGBoost, optimasi parameter dilakukan dengan RandomizedSearchCV dengan parameter:
+For the XGBoost model, parameter optimization was done with RandomizedSearchCV using:
 - n_estimators: [50, 100]
 - learning_rate: [0.01, 0.1]
 - max_depth: [3, 5]
 - subsample: [0.8, 1.0]
 - colsample_bytree: [0.8, 1.0]
-- scale_pos_weight: [1, weight_ratio] (untuk menangani ketidakseimbangan kelas)
+- scale_pos_weight: [1, weight_ratio] (to handle class imbalance)
 
-## Catatan Penting
+## Important Notes
 
-1. **Mengatasi Warning Worker Timeout**
-   - Jika muncul peringatan "A worker stopped while some jobs were given to the executor", coba:
-     - Kurangi ukuran dataset untuk tuning
-     - Kurangi jumlah iterasi dan parameter
-     - Kurangi paralelisme dengan n_jobs=2 
-     - Gunakan parameter XGBoost yang lebih hemat memori
+1. **Handling Worker Timeout Warning**
+   - If you see the warning "A worker stopped while some jobs were given to the executor", try:
+     - Reducing dataset size for tuning
+     - Reducing iterations and parameters
+     - Reducing parallelism with n_jobs=2 
+     - Using more memory-efficient XGBoost parameters
 
-2. **Menangani Ketidakseimbangan Kelas**
-   - Data fraud biasanya jauh lebih sedikit dibanding non-fraud
-   - Stratified sampling digunakan untuk mempertahankan distribusi kelas
-   - Parameter scale_pos_weight disesuaikan pada model XGBoost untuk memberikan bobot lebih pada kelas minoritas
+2. **Managing Class Imbalance**
+   - Fraud data is typically much less common than non-fraud
+   - Stratified sampling is used to maintain class distribution
+   - The scale_pos_weight parameter is adjusted in XGBoost to give more weight to the minority class
 
-## Langkah Selanjutnya
+## Next Steps
 
 Beberapa pengembangan yang bisa dilakukan:
-- Optimasi threshold untuk menyeimbangkan precision dan recall
-- Implementasi model ke dalam sistem produksi
-- Pengembangan dashboard monitoring performa model
-- Analisis mendalam terhadap faktor-faktor penyebab fraud
+- Threshold optimization to balance precision and recall
+- Implementing the model into a production system
+- Developing a model performance monitoring dashboard
+- In-depth analysis of factors contributing to fraud
